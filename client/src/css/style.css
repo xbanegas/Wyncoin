@@ -94,8 +94,16 @@ a:active {
 .main-header {
     padding-top: 170px;
     height: 850px;
-    background: linear-gradient(#ffa949, transparent 90%), linear-gradient(0deg, #fff, transparent), #ffa949 url('../images/mountains.jpg') no-repeat center;
+    background: linear-gradient(#49fff0, transparent 90%), linear-gradient(0deg, #fff, transparent), #ffa949 url('../images/miami-city2.jpg') no-repeat center;
     background-size: cover;
+}
+
+.ui.menu .item {
+	color: white;
+}
+
+.ui.menu .active.item {
+	color: white;
 }
 
 #top .menu {
