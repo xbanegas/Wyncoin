@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import logo from './logo.svg';
+import Navigation from './component/Navigation';
 import './css/style.css';
 
 
@@ -9,8 +9,9 @@ class App extends Component {
 
 			<div>
 				<header id="top" class="main-header">
-					<span class="title">Journey Through the Sierra Nevada Mountains</span>
-					<h1>Lake Tahoe, California</h1>
+					<Navigation />
+					<span class="title">Everybody Wins.</span>
+					<h1>Wyncoin</h1>
 					<img class="arrow" src="img/arrow.svg" alt="Down arrow" />
 				</header>
 
