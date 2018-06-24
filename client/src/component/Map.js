@@ -6,26 +6,26 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiY2hyaXNkdWVuYXMiLCJhIjoiY2ppczBhNnVkMXMzbDN3c
 
 export default class Map extends Component {
 
-    componentDidMount() {
-        navigator.geolocation.getCurrentPosition((position)=>{
-            let geoLoc = [position.coords.longitude, position.coords.latitude];
-            let map = new mapboxgl.Map({
-                container: this.mapContainer,
-                style: 'mapbox://styles/mapbox/streets-v9',
-                center: geoLoc,
-                zoom: 14
-            });
-        });
-    }
+	componentDidMount() {
+		navigator.geolocation.getCurrentPosition((position) => {
+			let geoLoc = [position.coords.longitude, position.coords.latitude];
+			let map = new mapboxgl.Map({
+				container: this.mapContainer,
+				style: 'mapbox://styles/mapbox/streets-v9',
+				center: geoLoc,
+				zoom: 14
+			});
+		});
+	}
 
 
-    render() {
-        const style = {
-            position: 'absolute',
-            top: 0,
-            bottom: 0,
-            width: '100%'
-          };
-        return  <div style={style} ref={el => this.mapContainer = el} />
-    }
+	render() {
+		const style = {
+			position: 'absolute',
+			top: 0,
+			bottom: 0,
+			width: '100%'
+		};
+		return <div style={style} ref={el => this.mapContainer = el} />
+	}
 }
