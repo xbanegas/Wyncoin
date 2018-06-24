@@ -94,7 +94,7 @@ a:active {
 .main-header {
     padding-top: 170px;
     height: 850px;
-    background: linear-gradient(#ffa949, transparent 90%), linear-gradient(0deg, #fff, transparent), #ffa949 url('../img/mountains.jpg') no-repeat center;
+    background: linear-gradient(#ffa949, transparent 90%), linear-gradient(0deg, #fff, transparent), #ffa949 url('../images/mountains.jpg') no-repeat center;
     background-size: cover;
 }
 
@@ -167,7 +167,7 @@ a:active {
     padding: 18% 24%;
     border-top: 10px solid #ffa949;
     margin: 105px 0 60px;
-    background: #434a52 url('../img/bear.jpg') no-repeat center;
+    background: #434a52 url(../images/bear.jpg) no-repeat center;
     background-size: cover;
     box-shadow: inset 0px 0px 50px 10px rgba(0, 0, 0, 1);
     border-radius: 10px;
