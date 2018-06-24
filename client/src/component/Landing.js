@@ -14,17 +14,16 @@ export default class Landing extends Component {
 
 				<div class="primary-content t-border">
 					<p class="intro">
-						Lake Tahoe is one of the most breathtaking attractions located in California. It's home to a number of ski resorts, summer
-						outdoor recreation, and tourist attractions. Snow and skiing are a significant part of the area's reputation.
-    </p>
+						At Wyncoin your bones don't break, mine do. That's clear. Your cells react to bacteria and viruses differently than mine. You don't get sick, I do. That's also clear. But for some reason, you and I react the exact same way to water. We swallow it too fast, we choke. We get some in our lungs, we drown. However unreal it may seem, we are connected, you and I. We're on the same curve, just on opposite ends.
+    			</p>
 					<a class="callout" href="#more">Find out more</a>
 
 					<div class="wildlife">
-						<h2>Check out all the Wildlife</h2>
+						<h2>Connect With Local Users</h2>
 						<p>
 							As spawning season approaches, the fish acquire a humpback and protuberant jaw. After spawning, they die and their carcasses
 							provide a feast for gatherings of
-            <a href="#mink">mink</a>,
+            <a href="#mink"> mink</a>,
             <a href="#bears">bears</a>, and
             <a href="#eagles">bald eagles</a>.
         </p>

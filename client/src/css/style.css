@@ -72,16 +72,16 @@ li {
 /* Pseudo-classes ------------------ */
 
 a:link {
-    color: rgb(255, 169, 73);
+    color: #49fff0;
     text-decoration: none;
 }
 
 a:visited {
-    color: lightblue;
+    color: #49fff0;
 }
 
 a:hover {
-    color: rgba(255, 169, 73, .4);
+    color: black;
 }
 
 a:active {
@@ -94,7 +94,7 @@ a:active {
 .main-header {
     padding-top: 170px;
     height: 850px;
-    background: linear-gradient(#49fff0, transparent 90%), linear-gradient(0deg, #fff, transparent), #ffa949 url('../images/miami-city2.jpg') no-repeat center;
+    background: linear-gradient(#49fff0, transparent 90%), linear-gradient(0deg, #fff, transparent), #49fff0 url('../images/miami-city2.jpg') no-repeat center;
     background-size: cover;
 }
 
@@ -157,7 +157,7 @@ a:active {
 .main-footer {
     padding-top: 60px;
     padding-bottom: 60px;
-    border-bottom: 10px solid #ffa949;
+    border-bottom: 10px solid #49fff0;
 }
 
 .t-border {
@@ -180,9 +180,9 @@ a:active {
     color: white;
     text-align: left;
     padding: 18% 24%;
-    border-top: 10px solid #ffa949;
+    border-top: 10px solid #49fff0;
     margin: 105px 0 60px;
-    background: #434a52 url(../images/bear.jpg) no-repeat center;
+    background: #434a52 url(../images/cell1.jpg) no-repeat center;
     background-size: cover;
     box-shadow: inset 0px 0px 50px 10px rgba(0, 0, 0, 1);
     border-radius: 10px;
