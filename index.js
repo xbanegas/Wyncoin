@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const url = require('url');
 const axios = require('axios');
+const Features = require('./utils/featureCollection');
 
 const app = express();
 
@@ -22,12 +23,23 @@ const getCoinmapVendors = async (query) => {
   let coinmapUrl = "https://coinmap.org/api/v1/venues/";
   console.log(coinmapUrl + coinmapParams);
   let res = await axios.get(coinmapUrl + coinmapParams);
-  return res.data.venues.length
+  return res.data.venues
 }
 
 app.get('/vendors', async (req, res)=>{
   console.log('getting vendors');
-  console.log(await getCoinmapVendors(req.query));
+  console.log(req.query);
+  let featureCollection = new Features.FeatureCollection();
+  let currentLoc = new Features.Feature([req.query.long, req.query.lat], 'Current');
+  featureCollection.addFeature(currentLoc);
+  let coinmapRes = await getCoinmapVendors(req.query);
+  coinmapRes.forEach((venue)=>{
+    let venueLoc = [String(venue.lon), String(venue.lat)];
+    let newVenue = new Features.Feature(venueLoc, venue.name);
+    featureCollection.addFeature(newVenue)
+  });
+  // console.log(featureCollection.features);
+  res.send(featureCollection);
 });
 
 // The "catchall" handler: for any request that doesn't

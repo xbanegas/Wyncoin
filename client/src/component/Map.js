@@ -8,41 +8,29 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiY2hyaXNkdWVuYXMiLCJhIjoiY2ppczBhNnVkMXMzbDN3c
 export default class Map extends Component {
 
 	getVendors = async (geoLoc) => {
-		let res = await axios.get(`/vendors?long=${geoLoc[0]}&lat=${geoLoc[1]}`)
+		return await axios.get(`/vendors?long=${geoLoc[0]}&lat=${geoLoc[1]}`)
 	}
 
 	componentDidMount() {
-		let geoLoc
+
+		let geoLoc;
 		navigator.geolocation.getCurrentPosition(async (position) => {
 			geoLoc = [position.coords.longitude, position.coords.latitude];
 			let map = new mapboxgl.Map({
 				container: this.mapContainer,
 				style: 'mapbox://styles/mapbox/streets-v9',
 				center: geoLoc,
-				zoom: 14
+				zoom: 12
 			});
 
+			console.log('geojson');
 			let res = await this.getVendors(geoLoc);
-			console.log(res);
 
-			var geojson = {
-				type: 'FeatureCollection',
-				features: [{
-					type: 'Feature',
-					geometry: {
-						type: 'Point',
-						coordinates: geoLoc
-					},
-					properties: {
-						title: 'Current Location',
-						description: 'Washington, D.C.'
-					}
-				}]
-			};
+			let geojson = res.data;
+			console.log(geojson.features);
 
 			// add markers to map
 			geojson.features.forEach(function(marker) {
-
 				// create a HTML element for each feature
 				var el = document.createElement('div');
 				el.className = 'marker';
