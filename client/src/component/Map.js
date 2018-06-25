@@ -18,7 +18,6 @@ export default class Map extends Component {
 		});
 	}
 
-
 	render() {
 		const style = {
 			position: 'absolute',
@@ -26,6 +25,6 @@ export default class Map extends Component {
 			bottom: 0,
 			width: '100%'
 		};
-		return <div style={style} ref={el => this.mapContainer = el} />
+		return <div id="mapContainer" style={{position:"relative",}}><div style={style} ref={el => this.mapContainer = el} /></div>
 	}
 }

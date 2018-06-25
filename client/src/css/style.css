@@ -99,11 +99,11 @@ a:active {
 }
 
 .ui.menu .item {
-	color: white;
+	color: black;
 }
 
 .ui.menu .active.item {
-	color: white;
+	color: black;
 }
 
 #top .menu {
