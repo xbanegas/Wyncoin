@@ -98,6 +98,10 @@ a:active {
     background-size: cover;
 }
 
+.ui.menu {
+	margin: 0;
+}
+
 .ui.menu .item {
 	color: black;
 }
