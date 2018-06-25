@@ -1,47 +1,36 @@
 import React, { Component } from 'react';
 import mapboxgl from 'mapbox-gl';
+import axios from 'axios';
 import '../css/map.css';
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiY2hyaXNkdWVuYXMiLCJhIjoiY2ppczBhNnVkMXMzbDN3cDhzczlmbTE3ayJ9.6YUyaCiEPJ_0b3QcoZxk5w';
 
 export default class Map extends Component {
 
+	getVendors = async (geoLoc) => {
+		return await axios.get(`/vendors?long=${geoLoc[0]}&lat=${geoLoc[1]}`)
+	}
+
 	componentDidMount() {
-		let geoLoc
-		navigator.geolocation.getCurrentPosition((position) => {
+
+		let geoLoc;
+		navigator.geolocation.getCurrentPosition(async (position) => {
 			geoLoc = [position.coords.longitude, position.coords.latitude];
 			let map = new mapboxgl.Map({
 				container: this.mapContainer,
 				style: 'mapbox://styles/mapbox/streets-v9',
 				center: geoLoc,
-				zoom: 14
+				zoom: 12
 			});
 
-			// let lat1 = geoLoc[1] + 10
-			// let lat2 =  geoLoc[1] - 10
-			// let lon1 = geoLoc[0] + 10
-			// let lon2 = geoLoc[0] - 10
+			console.log('geojson');
+			let res = await this.getVendors(geoLoc);
 
-
-
-			var geojson = {
-				type: 'FeatureCollection',
-				features: [{
-					type: 'Feature',
-					geometry: {
-						type: 'Point',
-						coordinates: geoLoc
-					},
-					properties: {
-						title: 'Current Location',
-						description: 'Washington, D.C.'
-					}
-				}]
-			};
+			let geojson = res.data;
+			console.log(geojson.features);
 
 			// add markers to map
 			geojson.features.forEach(function(marker) {
-
 				// create a HTML element for each feature
 				var el = document.createElement('div');
 				el.className = 'marker';
