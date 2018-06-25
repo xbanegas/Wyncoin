@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
 import mapboxgl from 'mapbox-gl';
+import axios from 'axios';
 import '../css/map.css';
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiY2hyaXNkdWVuYXMiLCJhIjoiY2ppczBhNnVkMXMzbDN3cDhzczlmbTE3ayJ9.6YUyaCiEPJ_0b3QcoZxk5w';
 
 export default class Map extends Component {
 
+	getVendors = async (geoLoc) => {
+		let res = await axios.get(`/vendors?long=${geoLoc[0]}&lat=${geoLoc[1]}`)
+	}
+
 	componentDidMount() {
 		let geoLoc
-		navigator.geolocation.getCurrentPosition((position) => {
+		navigator.geolocation.getCurrentPosition(async (position) => {
 			geoLoc = [position.coords.longitude, position.coords.latitude];
 			let map = new mapboxgl.Map({
 				container: this.mapContainer,
@@ -17,12 +22,8 @@ export default class Map extends Component {
 				zoom: 14
 			});
 
-			// let lat1 = geoLoc[1] + 10
-			// let lat2 =  geoLoc[1] - 10
-			// let lon1 = geoLoc[0] + 10
-			// let lon2 = geoLoc[0] - 10
-
-
+			let res = await this.getVendors(geoLoc);
+			console.log(res);
 
 			var geojson = {
 				type: 'FeatureCollection',
