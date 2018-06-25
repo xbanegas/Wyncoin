@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Landing from './component/Landing';
-import Map from './component/Map';
+import Sidebar from './component/Sidebar';
 import Signup from './component/Signup';
 import Navigation from './component/Navigation';
 import { BrowserRouter, Route } from 'react-router-dom';
@@ -16,10 +16,10 @@ class App extends Component {
 					<div>
 						<Navigation {...props} />
 						<Route exact path='/' component={Landing} />
-						<Route path='/map' component={Map} />
+						<Route path='/map' component={Sidebar} />
 						<Route path='/signup' component={Signup} />
 					</div>
-				}/>
+				} />
 			</BrowserRouter>
 		)
 	}

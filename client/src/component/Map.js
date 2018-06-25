@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import mapboxgl from 'mapbox-gl';
+import Sidebar from './Sidebar';
 import axios from 'axios';
 import '../css/map.css';
 
@@ -30,15 +31,15 @@ export default class Map extends Component {
 			console.log(geojson.features);
 
 			// add markers to map
-			geojson.features.forEach(function(marker) {
+			geojson.features.forEach(function (marker) {
 				// create a HTML element for each feature
 				var el = document.createElement('div');
 				el.className = 'marker';
 
 				// make a marker for each feature and add to the map
 				new mapboxgl.Marker(el)
-				.setLngLat(marker.geometry.coordinates)
-				.addTo(map);
+					.setLngLat(marker.geometry.coordinates)
+					.addTo(map);
 			});
 		});
 
@@ -52,6 +53,10 @@ export default class Map extends Component {
 			bottom: 0,
 			width: '100%'
 		};
-		return <div id="mapContainer" style={{position:"relative",}}><div style={style} ref={el => this.mapContainer = el} /></div>
+		return (
+			<div>
+				<div id="mapContainer" style={{ position: "relative", }}><div style={style} ref={el => this.mapContainer = el} /></div>)
+			</div>
+		)
 	}
 }
