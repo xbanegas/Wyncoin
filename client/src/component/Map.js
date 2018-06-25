@@ -16,7 +16,14 @@ export default class Map extends Component {
 				center: geoLoc,
 				zoom: 14
 			});
-			// [-77.032, 38.913]
+
+			// let lat1 = geoLoc[1] + 10
+			// let lat2 =  geoLoc[1] - 10
+			// let lon1 = geoLoc[0] + 10
+			// let lon2 = geoLoc[0] - 10
+
+
+
 			var geojson = {
 				type: 'FeatureCollection',
 				features: [{
@@ -26,11 +33,12 @@ export default class Map extends Component {
 						coordinates: geoLoc
 					},
 					properties: {
-						title: 'Mapbox',
+						title: 'Current Location',
 						description: 'Washington, D.C.'
 					}
 				}]
 			};
+
 			// add markers to map
 			geojson.features.forEach(function(marker) {
 
