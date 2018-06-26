@@ -5,12 +5,32 @@ export default class Features extends Component {
 	render() {
 		return (
 			<div>
-				<ul class="features">
-					<li>Features</li>
-					<li>Features</li>
-					<li>Features</li>
-				</ul>
-				<a class="callout" href="#more">Find out more</a>
+				<div class="features">
+					<div>
+						<img src="/img/features1.jpg" width="200" height="200" alt="Phone" />
+						<ul>
+							<li>Blah Blah Blah</li>
+							<li>Blah Blah Blah</li>
+							<li>Blah Blah Blah</li>
+						</ul>
+					</div>
+					<div>
+						<img src="/img/features2.jpg" width="200" height="200" alt="Phone" />
+						<ul>
+							<li>Blah Blah Blah</li>
+							<li>Blah Blah Blah</li>
+							<li>Blah Blah Blah</li>
+						</ul>
+					</div>
+					<div>
+						<img src="/img/features3.jpg" width="200" height="200" alt="Phone" />
+						<ul>
+							<li>Blah Blah Blah</li>
+							<li>Blah Blah Blah</li>
+							<li>Blah Blah Blah</li>
+						</ul>
+					</div>
+				</div>
 			</div>
 		)
 	}
