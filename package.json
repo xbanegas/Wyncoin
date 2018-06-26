@@ -6,11 +6,14 @@
   "author": "xbanegas <xbanegas@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node index.js",
+    "start": "nodemon index.js",
     "heroku-postbuild": "cd client && yarn && yarn run build"
   },
   "dependencies": {
     "axios": "^0.18.0",
     "express": "^4.16.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.5"
   }
 }

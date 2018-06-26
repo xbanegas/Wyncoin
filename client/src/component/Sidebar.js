@@ -11,9 +11,9 @@ class SidebarLeftUncover extends Component {
 	render() {
 		const { visible } = this.state
 		return (
-			<div>
-				<Button onClick={this.toggleVisibility}>Toggle Visibility</Button>
+			<div className="map-body">
 				<Sidebar.Pushable as={Segment}>
+					<Button onClick={this.toggleVisibility} color="black">Menu</Button>
 					<Sidebar
 						as={Menu}
 						animation='uncover'

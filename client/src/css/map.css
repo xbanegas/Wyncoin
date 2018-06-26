@@ -1,7 +1,9 @@
 #map {
-  height:500px;
+  min-height:500px;
   width:500px;
 }
+
+.ui.menu {border:0;}
 
 #mapContainer { height: 100vh; }
 
@@ -12,4 +14,17 @@
   height: 50px;
   border-radius: 50%;
   cursor: pointer;
+}
+
+.map-body{position:relative;}
+
+/* remove margin and padding around map */
+.map-body .ui.segment {margin: 0px; padding:0px;}
+
+
+.map-body .ui.button { 
+  position: absolute;
+  bottom: 7%;
+  left: 2.5%;
+  z-index: 5000;
 }
