@@ -1,6 +1,8 @@
 import axios from 'axios';
 import mapboxgl from 'mapbox-gl';
-
+import React from 'react';
+import ReactDOMServer from 'react-dom/server';
+import MapPopup from '../component/MapPopup';
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiY2hyaXNkdWVuYXMiLCJhIjoiY2ppczBhNnVkMXMzbDN3cDhzczlmbTE3ayJ9.6YUyaCiEPJ_0b3QcoZxk5w';
 
@@ -8,7 +10,7 @@ const getVendors = async (geoLoc) => {
   return await axios.get(`/vendors?long=${geoLoc[0]}&lat=${geoLoc[1]}`)
 }
 
-const initMap = async(mapContainer) =>{
+const initMap = async(mapContainer, addDirectionLoc, handleDirectionClick) =>{
   let geoLoc;
   let map;
   navigator.geolocation.getCurrentPosition(async (position) => {
@@ -41,10 +43,14 @@ const initMap = async(mapContainer) =>{
       el.className = 'marker';
       // make a marker for each feature and add to the map
       let popup = new mapboxgl.Popup({ offset: 25 })
-        .setHTML(`<h3>${vendor.properties.title}</h3>
-        <p>${vendor.properties.category} </p>
-        <button class="directions" onClick="console.log('getgeo')">go</button>`);
-      popup.on('open', (e)=>console.log(e.target._lngLat));
+        .setHTML(ReactDOMServer.renderToStaticMarkup(
+          <MapPopup 
+            vendor={vendor} 
+            handleDirectionClick={handleDirectionClick}
+          />))
+      popup.on('open', (e)=>{
+        addDirectionLoc(e.target._lngLat);
+      });
       let marker = new mapboxgl.Marker(el)
         .setLngLat(vendor.geometry.coordinates)
         // add popups
