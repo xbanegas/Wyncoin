@@ -13,8 +13,12 @@
     box-sizing: border-box;
 }
 
+#root {
+    width:100vw;
+}
+
 body {
-    color: #878787;
+    color:ghostwhite;
     margin: 0;
     font: 1em/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
@@ -47,7 +51,7 @@ h2 {
 h3 {
     font-size: 1.25em;
     /* 20px/16px  */
-    color: #48525c;
+    color: white;
     line-height: 1.2;
     margin-bottom: 1.7em;
     /* 34px */
