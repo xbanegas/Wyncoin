@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
+import {Button} from 'semantic-ui-react'
 
 export default class Map extends Component {
   render(){
     return(
       <div className="map-popup">
-        <h3>{this.props.vendor.properties.title}</h3>
         <p>{this.props.vendor.properties.category}</p>
-        <button onClick={this.props.handleDirectionClick}>Go</button>
+        <h3>{this.props.vendor.properties.title}</h3>
+        <div>
+          <Button color="green" onClick={this.props.handleDirectionClick}>Go</Button>
+        </div>
       </div>
     )
   }
