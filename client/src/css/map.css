@@ -30,3 +30,7 @@
 }
 
 .mapboxgl-popup-content h3 {margin:5px;}
+
+.map-popup, .map-popup h3 {
+  color: black;
+}
