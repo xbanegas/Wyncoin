@@ -10,11 +10,12 @@ const getVendors = async (geoLoc) => {
 
 const initMap = async(mapContainer) =>{
   let geoLoc;
+  let map;
   navigator.geolocation.getCurrentPosition(async (position) => {
     // get current location
     geoLoc = [position.coords.longitude, position.coords.latitude];
     // initialize map
-    let map = new mapboxgl.Map({
+    map = new mapboxgl.Map({
       container: mapContainer,
       style: 'mapbox://styles/mapbox/streets-v9',
       center: geoLoc,
@@ -30,24 +31,29 @@ const initMap = async(mapContainer) =>{
       },
       trackUserLocation: true
     }));
+
     // add markers to map
     let res = await getVendors(geoLoc);
     let geojson = res.data;
-    const getMarkerGeo = () => console.log('getgeo');
-    geojson.features.forEach(function (marker) {
+    geojson.features.forEach(function (vendor) {
       // create a HTML element for each feature
       var el = document.createElement('div');
       el.className = 'marker';
       // make a marker for each feature and add to the map
-      new mapboxgl.Marker(el)
-        .setLngLat(marker.geometry.coordinates)
-        .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
-        .setHTML(`<h3>${marker.properties.title}</h3>
-          <p>${marker.properties.category} </p>
-          <button onClick="console.log('getgeo')">go</button>`))
-        .addTo(map);
+      let popup = new mapboxgl.Popup({ offset: 25 })
+        .setHTML(`<h3>${vendor.properties.title}</h3>
+        <p>${vendor.properties.category} </p>
+        <button class="directions" onClick="console.log('getgeo')">go</button>`);
+      popup.on('open', (e)=>console.log(e.target._lngLat));
+      let marker = new mapboxgl.Marker(el)
+        .setLngLat(vendor.geometry.coordinates)
+        // add popups
+        .setPopup(popup);
+      marker.addTo(map);
     });
+
   });
+
 }
 
 export {initMap}
