@@ -1,12 +1,30 @@
 import React, { Component } from 'react'
-import '../css/sidebar.css';
+import axios from 'axios';
 import Map from './Map';
 import { Sidebar, Segment, Button, Menu, Icon } from 'semantic-ui-react'
+import '../css/sidebar.css';
 
 class SidebarLeftUncover extends Component {
-	state = { visible: false }
+	constructor(){
+		super()
+		this.state = { visible: false, price: ''}
+		this.priceTicker();
+	}
 
 	toggleVisibility = () => this.setState({ visible: !this.state.visible })
+
+	priceTicker =  async () => {
+		let {data} = await axios.get('https://blockchain.info/ticker');
+		let price = Number(data.USD.sell)
+			.toLocaleString('en-US', {style: 'currency', currency: 'USD', maximumFractionDigits: 2});
+		this.setState({price});
+		setInterval(async()=>{
+			let {data} = await axios.get('https://blockchain.info/ticker');
+			let price = Number(data.USD.sell)
+				.toLocaleString('en-US', {style: 'currency', currency: 'USD', maximumFractionDigits: 2});
+			this.setState({price});
+		}, 30000);
+	}
 
 	render() {
 		const { visible } = this.state
@@ -23,17 +41,23 @@ class SidebarLeftUncover extends Component {
 						vertical
 						inverted
 					>
+						<Menu.Item name='price'>
+							BTC: {this.state.price}
+						</Menu.Item>
 						<Menu.Item name='home'>
 							<Icon name='home' />
 							Home
             </Menu.Item>
-						<Menu.Item name='gamepad'>
-							<Icon name='gamepad' />
-							Games
+						<Menu.Item name='user'>
+							<Icon name='user' />
+							Profile
             </Menu.Item>
-						<Menu.Item name='camera'>
-							<Icon name='camera' />
-							Channels
+						<Menu.Item name='bell'>
+							<Icon name='bell' />
+							Alerts
+            </Menu.Item>
+						<Menu.Item name='signout'>
+							Sign Out
             </Menu.Item>
 					</Sidebar>
 					<Sidebar.Pusher>

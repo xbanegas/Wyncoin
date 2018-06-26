@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Header from "./Header";
-import Features from "./Features";
-import Mission from "./Mission";
-import MapPreview from "./MapPreview";
-import Footer from "./Footer";
+import Header from "./Landing/Header";
+import Features from "./Landing/Features";
+import Mission from "./Landing/Mission";
+import MapPreview from "./Landing/MapPreview";
+import Footer from "./Landing/Footer";
 
 export default class Landing extends Component {
 	render() {
