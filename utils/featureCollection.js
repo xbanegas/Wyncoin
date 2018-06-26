@@ -9,7 +9,7 @@ class FeatureCollection {
 }
 
 class Feature {
-  constructor(coords, title){
+  constructor(coords, title, category){
     this.type = 'Feature';
     this.geometry = {
       type: 'Point',
@@ -17,7 +17,7 @@ class Feature {
     };
     this.properties = {
       title: title,
-      description: 'Description'
+      category: category
     }
   }
 }
