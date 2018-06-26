@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import '../css/sidebar.css';
 import Map from './Map';
-import { Sidebar, Segment, Button, Menu, Image, Icon, Header } from 'semantic-ui-react'
+import { Sidebar, Segment, Button, Menu, Icon } from 'semantic-ui-react'
 
 class SidebarLeftUncover extends Component {
 	state = { visible: false }
