@@ -80,17 +80,17 @@ a:link {
     text-decoration: none;
 }
 
-a:visited {
+/* a:visited {
     color: #49fff0;
-}
+} */
 
 a:hover {
     color: black;
 }
 
-a:active {
-    color: lightcoral;
-}
+	/* a:active {
+			color: lightcoral;
+	} */
 
 
 /* Main Styles --------------------- */
@@ -132,9 +132,17 @@ a:active {
 }
 
 .features {
-    font-size: 1.25em;
+		display: flex;
+		justify-content: space-between;
+		padding-top:	20px;
+    font-size: 1rem;
     /* 20px/16px */
-    line-height: 1.6;
+		line-height: 1.6;
+}
+
+
+.features .featpic {
+	border: 1px, solid, grey;
 }
 
 .primary-content,
