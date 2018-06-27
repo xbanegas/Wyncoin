@@ -1,10 +1,11 @@
 import axios from 'axios';
 import mapboxgl from 'mapbox-gl';
 import React from 'react';
-import ReactDOMServer from 'react-dom/server';
+import ReactDOMServer from 'react-dom/server'
+import config from '../config';
 import MapPopup from '../component/MapPopup';
 
-mapboxgl.accessToken = 'pk.eyJ1IjoiY2hyaXNkdWVuYXMiLCJhIjoiY2ppczBhNnVkMXMzbDN3cDhzczlmbTE3ayJ9.6YUyaCiEPJ_0b3QcoZxk5w';
+mapboxgl.accessToken = config.mapboxAPIKey;
 
 const getVendors = async (geoLoc) => {
   return await axios.get(`/vendors?long=${geoLoc[0]}&lat=${geoLoc[1]}`)
@@ -37,19 +38,23 @@ const initMap = async(mapContainer, addDirectionLoc, handleDirectionClick) =>{
     // add markers to map
     let res = await getVendors(geoLoc);
     let geojson = res.data;
-    geojson.features.forEach(function (vendor) {
+    geojson.features.forEach(function (vendor,i) {
       // create a HTML element for each feature
       var el = document.createElement('div');
       el.className = 'marker';
       // make a marker for each feature and add to the map
+      let popupId = `popup-${i}`
       let popup = new mapboxgl.Popup({ offset: 25 })
         .setHTML(ReactDOMServer.renderToStaticMarkup(
           <MapPopup 
+            styleName={popupId}
             vendor={vendor} 
-            handleDirectionClick={handleDirectionClick}
           />))
       popup.on('open', (e)=>{
-        addDirectionLoc(e.target._lngLat);
+        // addDirectionLoc(e.target._lngLat);
+        document.getElementById(popupId).addEventListener('click', (f)=>{
+          handleDirectionClick(e.target._lngLat);
+        });
       });
       let marker = new mapboxgl.Marker(el)
         .setLngLat(vendor.geometry.coordinates)

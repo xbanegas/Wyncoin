@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {initMap} from '../utils/mapUtils';
+import axios from 'axios';
 import '../css/map.css';
 
 
@@ -21,11 +22,22 @@ export default class Map extends Component {
 	}
 
 	addDirectionLoc(directionLoc){
+		console.log('hellodirection');
 		this.setState({directionLoc});
 	}
 
-	handleDirectionClick(){
-		console.log('helllooodirection');
+	handleDirectionClick(loc){
+		console.log('helllooodirection', loc);
+		let userLng;
+		let userLat;
+		navigator.geolocation.getCurrentPosition(async (position)=>{
+			console.log(position.coords.longitude);
+			userLng = position.coords.longitude;
+			userLat = position.coords.latitude;
+			axios.get(`/route?orig=${userLng},${userLat}&dest=${loc.lng},${loc.lat}`);
+		});
+
+
 	}
 
 	render() {
