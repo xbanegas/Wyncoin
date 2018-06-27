@@ -1,6 +1,21 @@
 .feature {
   min-width: 500px;
-  max-height: 300px;
-  overflow: hidden;
+  padding-top: 5%;
+  padding-bottom: 5%;
 }
 
+
+#feature1 {
+  background:url('../images/features1.jpg');
+  background-size:cover;
+
+}
+#feature2 {
+  background: url('../images/features2.jpg');
+  background-size:cover;
+
+}
+#feature3 {
+  background: url('../images/features3.jpg');
+  background-size:cover;
+}
