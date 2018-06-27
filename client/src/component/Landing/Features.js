@@ -8,7 +8,7 @@ export default class Features extends Component {
 				<div class="features">
 					<div>
 						<img src="/img/features1.jpg" width="200" height="200" alt="Phone" />
-						<ul>
+						<ul className="list">
 							<li>Blah Blah Blah</li>
 							<li>Blah Blah Blah</li>
 							<li>Blah Blah Blah</li>
@@ -16,7 +16,7 @@ export default class Features extends Component {
 					</div>
 					<div>
 						<img src="/img/features2.jpg" width="200" height="200" alt="Phone" />
-						<ul>
+						<ul className="list">
 							<li>Blah Blah Blah</li>
 							<li>Blah Blah Blah</li>
 							<li>Blah Blah Blah</li>
@@ -24,7 +24,7 @@ export default class Features extends Component {
 					</div>
 					<div>
 						<img src="/img/features3.jpg" width="200" height="200" alt="Phone" />
-						<ul>
+						<ul className="list">
 							<li>Blah Blah Blah</li>
 							<li>Blah Blah Blah</li>
 							<li>Blah Blah Blah</li>
