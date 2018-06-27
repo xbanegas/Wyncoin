@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const vendor = require('./utils/vendors');
+const route = require('./utils/route');
 
 const app = express();
 
@@ -16,6 +17,12 @@ app.get('/vendors', async (req, res)=>{
   console.log('getting vendors');
   let featureCollection = await vendor.genFeatureCollection(req.query);
   res.send(featureCollection);
+});
+
+app.get('/route', async(req, res)=>{
+  console.log('routing');
+  let routeData = await route.getRoute(req.query);
+  res.send(routeData);
 });
 
 // The "catchall" handler: for any request that doesn't

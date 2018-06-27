@@ -8,7 +8,14 @@ export default class Map extends Component {
         <p>{this.props.vendor.properties.category}</p>
         <h3>{this.props.vendor.properties.title}</h3>
         <div>
-          <Button color="green" onClick={this.props.handleDirectionClick}>Go</Button>
+          <Button 
+            color="green"
+            id={this.props.styleName} 
+            className="startNav" 
+            onClick={this.props.handleDirectionClick}
+          >
+            Go
+          </Button>
         </div>
       </div>
     )
