@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-
+import '../../css/mapPreview.css';
 
 export default class MapPreview extends Component {
 	render() {
 		return (
-			<div>
-				<div class="resorts">
-					<img src="/img/resort.jpg" alt="Resort" />
+			<div id="mapPreview">
+				<div class="mapDescription">
 					<h3>From Tents to Resorts</h3>
 					<p>
 						Lake Tahoe is full of wonderful places to stay. You have the ability to sleep in the outdoors in a tent, or relax like a
@@ -24,20 +23,8 @@ export default class MapPreview extends Component {
 						</li>
 					</ul>
 				</div>
-				<div class="tips">
-					<img src={`${process.env.PUBLIC_URL}/img/mtn-landscape.jpg`} alt="Mountain Landscape" />
-					<h3>Pack Accordingly</h3>
-					<p>
-						One of most important things when it comes to traveling through the great outdoors is packing accordingly. Here are a few
-						tips:
-					</p>
-					<ol>
-						<li>Bring layers of clothing</li>
-						<li>Pack sunscreen</li>
-						<li>Carry extra water just in case</li>
-						<li>Pack light</li>
-					</ol>
-
+				<div class="map">
+					<img src={`${process.env.PUBLIC_URL}/img/map.png`} alt="map" />
 				</div>
 			</div>
 		)

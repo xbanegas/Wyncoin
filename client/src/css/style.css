@@ -140,7 +140,6 @@ a:hover {
     line-height: 1.6;
 }
 
-.feature {flex: 1;}
 
 .feature h3 {margin:10px;}
 
@@ -183,7 +182,6 @@ a:hover {
 .main-footer {
     padding-top: 60px;
     padding-bottom: 60px;
-    border-bottom: 10px solid #49fff0;
 }
 
 
@@ -204,7 +202,6 @@ a:hover {
 		text-align: left;
 		font-size: 1rem;
     padding: 18% 24%;
-    border-top: 10px solid #49fff0;
     margin: 105px 0 60px;
     background: #434a52 url(../images/cell1.jpg) no-repeat center;
     background-size: cover;
@@ -215,22 +212,6 @@ a:hover {
 .arrow {
     width: 50px;
     margin-top: 150px;
-}
-
-
-/* Floated Columns ------------------ */
-
-.resorts,
-.tips {
-    width: 46.5%;
-}
-
-.tips {
-    float: left;
-}
-
-.resorts {
-    float: right;
 }
 
 

@@ -10,13 +10,13 @@ export default class Landing extends Component {
 		return (
 			<div>
 				<Header />
-				<div class="primary-content t-border" id="about">
-					<Features />
-					<Mission />
-				</div>
-				<div class="secondary-content t-border group">
-					<MapPreview />
-				</div>
+
+				<Features />
+				<Mission />
+
+
+				<MapPreview />
+
 				<Footer />
 			</div>
 

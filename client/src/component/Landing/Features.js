@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import '../../css/features.css'
 
 export default class Features extends Component {
 	render() {
@@ -8,7 +8,7 @@ export default class Features extends Component {
 				<div class="features">
 					<div class="feature">
 							<div class="feature-icon">
-								<img src="/img/features1.jpg" width="200" height="200" alt="Phone" />
+								<img src="/img/features1.jpg" alt="Phone" />
 							</div>
 							<h3>Meet up and Trade crypto</h3>
 							<div class="feature-text">
@@ -18,17 +18,16 @@ export default class Features extends Component {
 					</div>
 					<div class="feature">
 						<div class="feature-icon">
-							<img src="/img/features2.jpg" width="200" height="200" alt="Phone" />
+							<img src="/img/features2.jpg" alt="Phone" />
 						</div>
 						<h3>Local BTMs and Vendors</h3>
-
 						<div class="feature-text">
 							<p>Save yourself the time and buy bitcoin on the go.</p>
 						</div>
 					</div>
 					<div class="feature">
 						<div class="feature-icon">
-							<img src="/img/features3.jpg" width="200" height="200" alt="Phone" />
+							<img src="/img/features3.jpg"  alt="Phone" />
 						</div>
 						<h3>Rate and Review Users</h3>
 

@@ -21,24 +21,29 @@ export default class Navigation extends Component {
 		return (
 			<Menu id="navbar">
 				<div>
-				<Menu.Item header position='right' name="main" onClick={this.handleItemClick}>Our Company</Menu.Item>
+					<Menu.Item header position='left' name="main" onClick={this.handleItemClick}>Our Company</Menu.Item>
 				</div>
 				<div>
-				<Menu.Item
-					name='aboutUs'
-					active={activeItem === 'aboutUs'}
-					href="#about"
-				/>
+					<Menu.Item
+						name='aboutUs'
+						position='right'
+						active={activeItem === 'aboutUs'}
+						href="#about"
+					/>
 				</div>
 				<div>
-				<Menu.Item name='log in' active={activeItem === 'log in'} onClick={this.handleItemClick} />
+					<Menu.Item 
+						name='log in' 
+						active={activeItem === 'log in'} 
+						onClick={this.handleItemClick} 
+					/>
 				</div>
 				<div>
-				<Menu.Item
-					name='sign up'
-					active={activeItem === 'sign up'}
-					onClick={this.handleItemClick}
-				/>
+					<Menu.Item
+						name='sign up'
+						active={activeItem === 'sign up'}
+						onClick={this.handleItemClick}
+					/>
 				</div>
 			</Menu>
 		)
