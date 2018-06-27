@@ -9,14 +9,15 @@ const getRoute = async (query) =>{
   let profile = "driving";
   let coordinates = `${query.orig};${query.dest}`;
   let routeParams = "steps=true";
-  let requestURL = `${mapboxURL}/${profile}/${coordinates}?access_token=${accessToken}&${routeParams}`;
+  let geometries = "geometries=geojson"
+  let requestURL = `${mapboxURL}/${profile}/${coordinates}?${geometries}&access_token=${accessToken}&${routeParams}`;
   // make request
   let routeRes = await axios.get(requestURL).catch(e=>e);
   switch (routeRes.status) {
     case (200):
       let data = routeRes.data
       console.log(data.code, data.uuid, data.waypoints);
-      break;
+      return data
     default:
       let res = routeRes.response;
       console.log('query response:' ,res.status, res.statusText);

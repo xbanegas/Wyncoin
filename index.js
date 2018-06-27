@@ -21,7 +21,8 @@ app.get('/vendors', async (req, res)=>{
 
 app.get('/route', async(req, res)=>{
   console.log('routing');
-  route.getRoute(req.query);
+  let routeData = await route.getRoute(req.query);
+  res.send(routeData);
 });
 
 // The "catchall" handler: for any request that doesn't

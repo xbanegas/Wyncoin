@@ -14,6 +14,7 @@ const getVendors = async (geoLoc) => {
 const initMap = async(mapContainer, addDirectionLoc, handleDirectionClick) =>{
   let geoLoc;
   let map;
+  // @todo make geolocation util, return map
   navigator.geolocation.getCurrentPosition(async (position) => {
     // get current location
     geoLoc = [position.coords.longitude, position.coords.latitude];
@@ -52,8 +53,10 @@ const initMap = async(mapContainer, addDirectionLoc, handleDirectionClick) =>{
           />))
       popup.on('open', (e)=>{
         // addDirectionLoc(e.target._lngLat);
-        document.getElementById(popupId).addEventListener('click', (f)=>{
-          handleDirectionClick(e.target._lngLat);
+        document.getElementById(popupId).addEventListener('click', async (f)=>{
+          let routeData = await handleDirectionClick(e.target._lngLat);
+          // console.log('responseRoute', routeData);
+          addDirections(map, routeData, document);
         });
       });
       let marker = new mapboxgl.Marker(el)
@@ -61,10 +64,67 @@ const initMap = async(mapContainer, addDirectionLoc, handleDirectionClick) =>{
         // add popups
         .setPopup(popup);
       marker.addTo(map);
+      return map;
     });
-
   });
-
 }
+
+const addDirections = (map, routeData, document) => {
+  let {data} = routeData;
+  let route = data.routes[0].geometry;
+  map.addLayer({
+    id: 'route',
+    type: 'line',
+    source: {
+      type: 'geojson',
+      data: {
+        type: 'Feature',
+        geometry: route
+      }
+    },
+    paint: {
+      'line-width': 2
+    }
+  });
+  let start = data.waypoints[0].location;
+  let end = data.waypoints[1].location;
+  let startLayer = {
+    id: 'start',
+    type: 'circle',
+    source: {
+      type: 'geojson',
+      data: {
+        type: 'Feature',
+        geometry: {
+          type: 'Point',
+          coordinates: start
+        },
+        properties: {}
+      }
+    }
+  }
+  map.addLayer(startLayer);
+  map.addLayer({
+    id: 'end',
+    type: 'circle',
+    source: {
+      type: 'geojson',
+      data: {
+        type: 'Feature',
+        geometry: {
+          type: 'Point',
+          coordinates: end
+        }
+      }
+    }
+  });
+  var instructions = document.getElementById('instructions');
+  instructions.className = "visible";
+  var steps = data.routes[0].legs[0].steps;
+  steps.forEach(function(step) {
+    instructions.insertAdjacentHTML('beforeend', '<p>' + step.maneuver.instruction + '</p>');
+  });
+}
+
 
 export {initMap}

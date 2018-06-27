@@ -41,3 +41,19 @@
 .map-popup p {margin:0;}
 .map-popup h3 { margin: 5px 20px 50px 20px;}
 .map-popup button { width: 100%;}
+
+#instructions {
+  position: absolute;
+  color: black;
+  margin: 20px;
+  width: 25%;
+  top: 0;
+  bottom: 0;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.9);
+  overflow-y: scroll;
+  font-family: sans-serif;
+}
+
+.hidden{display:none;}
+.visible{display:block;}
