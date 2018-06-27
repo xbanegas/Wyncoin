@@ -7,11 +7,7 @@ export default class Mission extends Component {
 			<div class="wildlife">
 				<h2>Connect With Local Users</h2>
 				<p>
-					As spawning season approaches, the fish acquire a humpback and protuberant jaw. After spawning, they die and their carcasses
-					provide a feast for gatherings of
-					<a href="#mink"> mink</a>,
-					<a href="#bears">bears</a>, and
-					<a href="#eagles">bald eagles</a>.
+					Wyncoin brings individuals together with a common goal: The live interaction with those who share a common set of values and beliefs in the evolution of digital exchange. While cryptocurrency ATMs are still gradually growing widespread, Wyncoin simply connects you to the market through your community.
 				</p>
 			</div>
 		)
