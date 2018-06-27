@@ -6,29 +6,35 @@ export default class Features extends Component {
 		return (
 			<div>
 				<div class="features">
-					<div>
-						<img src="/img/features1.jpg" width="200" height="200" alt="Phone" />
-						<ul className="list">
-							<li>Blah Blah Blah</li>
-							<li>Blah Blah Blah</li>
-							<li>Blah Blah Blah</li>
-						</ul>
+					<div class="feature">
+							<div class="feature-icon">
+								<img src="/img/features1.jpg" width="200" height="200" alt="Phone" />
+							</div>
+							<h3>Meet up and Trade crypto</h3>
+							<div class="feature-text">
+								
+								<p>Link to users in the community and decide how you choose to offer or accept payment.</p>
+							</div>
 					</div>
-					<div>
-						<img src="/img/features2.jpg" width="200" height="200" alt="Phone" />
-						<ul className="list">
-							<li>Blah Blah Blah</li>
-							<li>Blah Blah Blah</li>
-							<li>Blah Blah Blah</li>
-						</ul>
+					<div class="feature">
+						<div class="feature-icon">
+							<img src="/img/features2.jpg" width="200" height="200" alt="Phone" />
+						</div>
+						<h3>Local BTMs and Vendors</h3>
+
+						<div class="feature-text">
+							<p>Save yourself the time and buy bitcoin on the go.</p>
+						</div>
 					</div>
-					<div>
-						<img src="/img/features3.jpg" width="200" height="200" alt="Phone" />
-						<ul className="list">
-							<li>Blah Blah Blah</li>
-							<li>Blah Blah Blah</li>
-							<li>Blah Blah Blah</li>
-						</ul>
+					<div class="feature">
+						<div class="feature-icon">
+							<img src="/img/features3.jpg" width="200" height="200" alt="Phone" />
+						</div>
+						<h3>Rate and Review Users</h3>
+
+						<div class="feature-text">
+							<p>Credibility in your direct transactions are important when purchasing your digital assets. </p>
+						</div>
 					</div>
 				</div>
 			</div>
