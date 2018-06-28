@@ -6,10 +6,9 @@ export default class MapPreview extends Component {
 		return (
 			<div id="mapPreview">
 				<div class="mapDescription">
-					<h3>From Tents to Resorts</h3>
+					<h3>Get to Your Destination</h3>
 					<p>
-						Lake Tahoe is full of wonderful places to stay. You have the ability to sleep in the outdoors in a tent, or relax like a
-						king at a five star resort. Here are our top three resorts:
+					Route to users, BTMs, and Vendors alike with OpenStreetMaps powered navigation.  OpenStreetMaps is a peer-to-peer project with its main purpose to have an full-scale database of every street, city, road, building etc on the planet.
 				 	</p>
 				</div>
 				<div class="map">
@@ -19,5 +18,3 @@ export default class MapPreview extends Component {
 		)
 	}
 }
-
-
