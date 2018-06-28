@@ -18,7 +18,8 @@
 }
 
 body {
-    color:ghostwhite;
+    background-color:#302f2f;
+    color:white;
     margin: 0;
     font: 1em/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
@@ -29,7 +30,7 @@ h2 {
 }
 
 h1 {
-    font-size: 5.625rem;
+    font-size: 8.625rem;
     /* 90px/16px  */
     color: rgba(255, 255, 255, 1);
     text-transform: uppercase;
@@ -98,7 +99,7 @@ a:hover {
 .main-header {
     padding-top: 170px;
     height: 850px;
-    background: linear-gradient(#49fff0, transparent 90%), linear-gradient(0deg, #fff, transparent), #49fff0 url('../images/miami-city2.jpg') no-repeat center;
+    background: linear-gradient(#49fff0, transparent 90%), linear-gradient(0deg, #3e3d3d, transparent), #49fff0 url('../images/miami-city2.jpg') no-repeat center;
     background-size: cover;
 }
 
@@ -132,21 +133,22 @@ a:hover {
 }
 
 .features {
-		display: flex;
-		justify-content: space-between;
-		padding-top:	20px;
+    display: flex;
+    justify-content: space-evenly;
+    padding-top:	20px;
     font-size: 1rem;	
-		line-height: 1.6;
-		border-bottom: 2px solid #dfe2e6;
-}
-
-.features ul {
-	list-style-type: none;
-	padding-right: 35px;
+    line-height: 1.6;
 }
 
 
+.feature h3 {margin:10px;}
 
+.feature-text {
+    width:200px;
+    margin-left:auto;
+    margin-right: auto;
+    text-align: left;
+}
 
 .features .featpic {
 	border: 1px, solid, grey;
@@ -180,12 +182,8 @@ a:hover {
 .main-footer {
     padding-top: 60px;
     padding-bottom: 60px;
-    border-bottom: 10px solid #49fff0;
 }
 
-.t-border {
-    border-top: 2px solid #dfe2e6;
-}
 
 
 /* Layout Styles ------------------ */
@@ -204,33 +202,17 @@ a:hover {
 		text-align: left;
 		font-size: 1rem;
     padding: 18% 24%;
-    border-top: 10px solid #49fff0;
     margin: 105px 0 60px;
     background: #434a52 url(../images/cell1.jpg) no-repeat center;
     background-size: cover;
     box-shadow: inset 0px 0px 50px 10px rgba(0, 0, 0, 1);
-    border-radius: 10px;
+		border-radius: 10px;
+		background-attachment: fixed;
 }
 
 .arrow {
     width: 50px;
     margin-top: 150px;
-}
-
-
-/* Floated Columns ------------------ */
-
-.resorts,
-.tips {
-    width: 46.5%;
-}
-
-.tips {
-    float: left;
-}
-
-.resorts {
-    float: right;
 }
 
 

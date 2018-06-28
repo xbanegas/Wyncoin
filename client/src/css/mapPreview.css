@@ -1,0 +1,13 @@
+#mapPreview {
+  display: flex;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+#mapPreview .mapDescription {
+  flex: 1;
+}
+
+#mapPreview .map {
+  flex: 2;
+}
