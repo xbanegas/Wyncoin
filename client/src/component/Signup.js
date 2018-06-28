@@ -18,7 +18,7 @@ class FormExampleForm extends Component {
 						<input type="email" placeholder="Email" />
 						<input type="password" placeholder="Password" />
 						<input type="password" placeholder="Confirm Password" />
-						<input id="button" type="button" value="Sign Up" />
+						<input id="button" type="button" value="Sign Up" onClick={this.handleRegisterClick} />
 					</form>
 				</div>
 			</div>
