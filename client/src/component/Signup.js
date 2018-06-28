@@ -1,40 +1,27 @@
-import React, {Component} from 'react'
-import { Button, Checkbox, Form } from 'semantic-ui-react'
+import React, { Component } from 'react'
+
 
 
 class FormExampleForm extends Component {
 	handleRegisterClick = (e) => {
-			this.props.history.push('/map');
+		this.props.history.push('/map');
 	}
 
-	render(){
-		return(
-			<Form>
-				<Form.Field>
-					<label>Email</label>
-					<input placeholder='Email' />
-				</Form.Field>
-				<Form.Field>
-					<label>Username</label>
-					<input placeholder='Username (optional)' />
-				</Form.Field>
-				<Form.Field>
-					<label>Password</label>
-					<input placeholder='Password' />
-				</Form.Field>
-				<Form.Field>
-					<label>First Name</label>
-					<input placeholder='First Name' />
-				</Form.Field>
-				<Form.Field>
-					<label>Last Name</label>
-					<input placeholder='Last Name' />
-				</Form.Field>
-				<Form.Field>
-					<Checkbox label='I agree to the Terms and Conditions' />
-				</Form.Field>
-				<Button type='submit' onClick={this.handleRegisterClick}>Submit</Button>
-			</Form>
+	render() {
+		return (
+
+			<div class="form-wrap">
+				<form>
+					<h1>Sign Up</h1>
+					<input type="text" placeholder="First Name" />
+					<input type="text" placeholder="Last Name" />
+					<input type="email" placeholder="Email" />
+					<input type="password" placeholder="Password" />
+					<input type="password" placeholder="Confirm Password" />
+					<input id="button" type="button" value="Sign Up" />
+				</form>
+			</div>
+
 		)
 	}
 }
