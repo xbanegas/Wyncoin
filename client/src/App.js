@@ -6,7 +6,8 @@ import Login from './component/Login';
 import Navigation from './component/Navigation';
 import { BrowserRouter, Route } from 'react-router-dom';
 import './css/style.css';
-import './css/signup.css'
+// import './css/signup.css';
+
 
 
 class App extends Component {
