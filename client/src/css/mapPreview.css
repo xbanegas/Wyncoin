@@ -11,3 +11,9 @@
 #mapPreview .map {
   flex: 2;
 }
+
+@media (max-width:768px) {
+  #mapPreview{
+    flex-direction: column;
+  }
+}

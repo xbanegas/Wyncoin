@@ -30,7 +30,7 @@ export default class Navigation extends Component {
 						name='aboutUs'
 						position='right'
 						active={activeItem === 'aboutUs'}
-						href="/#about"
+						href="#about"
 					/>
 				</div>
 				<div>
