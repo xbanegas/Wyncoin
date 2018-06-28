@@ -10,6 +10,8 @@ export default class Navigation extends Component {
 		console.log(name);
 		if (name === "main" ) {
 			this.props.history.push('/');
+		} else if(name === "log in") {
+			this.props.history.push('/login');
 		} else {
 			this.props.history.push('/signup');
 		}
@@ -28,7 +30,7 @@ export default class Navigation extends Component {
 						name='aboutUs'
 						position='right'
 						active={activeItem === 'aboutUs'}
-						href="#about"
+						href="/#about"
 					/>
 				</div>
 				<div>
