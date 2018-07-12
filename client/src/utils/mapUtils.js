@@ -9,11 +9,12 @@ const getVendors = async (geoLoc) => {
   return await axios.get(`/vendors?long=${geoLoc[0]}&lat=${geoLoc[1]}`)
 }
 
-const initMap = async(mapContainer, handleDirectionClick) =>{
+const initMap = async (userLoc, mapContainer ) =>{
   let geoLoc;
   let map;
+
   // get current location
-  let position = await loadPosition();
+  let position = userLoc;
   geoLoc = [position.coords.longitude, position.coords.latitude];
 
   // initialize map
@@ -35,12 +36,12 @@ const initMap = async(mapContainer, handleDirectionClick) =>{
     },
     trackUserLocation: true
   }));
-
-  // add markers to map
-  addVendorsToMap(document, map, geoLoc, handleDirectionClick);
+  return map
 }
 
-const addVendorsToMap = async(document, map, geoLoc, handleDirectionClick) => {
+const addVendorsToMap = async(document, map, userLoc, handleDirectionClick) => {
+  let position = userLoc;
+  let geoLoc = [position.coords.longitude, position.coords.latitude];
   let res = await getVendors(geoLoc);
   let geojson = res.data;
   geojson.features.forEach(function (vendor,i) {
@@ -65,4 +66,4 @@ const getCurrentPosition = (options = {}) => {
   });
 };
 
-export {initMap, loadPosition}
+export {initMap, loadPosition, addVendorsToMap}
