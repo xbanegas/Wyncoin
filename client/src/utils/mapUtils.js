@@ -14,58 +14,56 @@ const getVendors = async (geoLoc) => {
 const initMap = async(mapContainer, addDirectionLoc, handleDirectionClick) =>{
   let geoLoc;
   let map;
-  // @todo make geolocation util, return map
-  navigator.geolocation.getCurrentPosition(async (position) => {
-    // get current location
-    geoLoc = [position.coords.longitude, position.coords.latitude];
-    // initialize map
-    map = new mapboxgl.Map({
-      container: mapContainer,
-      style: 'mapbox://styles/mapbox/streets-v9',
-      center: geoLoc,
-      zoom: 12
-    });
-    // add Nav control
-    var nav = new mapboxgl.NavigationControl();
-    map.addControl(nav, 'top-right');
-    // add GeoLocate
-    map.addControl(new mapboxgl.GeolocateControl({
-      positionOptions: {
-          enableHighAccuracy: true
-      },
-      trackUserLocation: true
-    }));
+  // get current location
+  let position = await loadPosition();
+  geoLoc = [position.coords.longitude, position.coords.latitude];
 
-    // add markers to map
-    let res = await getVendors(geoLoc);
-    let geojson = res.data;
-    geojson.features.forEach(function (vendor,i) {
-      // create a HTML element for each feature
-      var el = document.createElement('div');
-      el.className = 'marker';
-      // make a marker for each feature and add to the map
-      let popupId = `popup-${i}`
-      let popup = new mapboxgl.Popup({ offset: 25 })
-        .setHTML(ReactDOMServer.renderToStaticMarkup(
-          <MapPopup 
-            styleName={popupId}
-            vendor={vendor} 
-          />))
-      popup.on('open', (e)=>{
-        // addDirectionLoc(e.target._lngLat);
-        document.getElementById(popupId).addEventListener('click', async (f)=>{
-          let routeData = await handleDirectionClick(e.target._lngLat);
-          // console.log('responseRoute', routeData);
-          addDirections(map, routeData, document);
-        });
+  // initialize map
+  map = new mapboxgl.Map({
+    container: mapContainer,
+    style: 'mapbox://styles/mapbox/streets-v9',
+    center: geoLoc,
+    zoom: 12
+  });
+
+  // add Nav control
+  var nav = new mapboxgl.NavigationControl();
+  map.addControl(nav, 'top-right');
+  // add GeoLocate
+  map.addControl(new mapboxgl.GeolocateControl({
+    positionOptions: {
+        enableHighAccuracy: true
+    },
+    trackUserLocation: true
+  }));
+
+  // add markers to map
+  let res = await getVendors(geoLoc);
+  let geojson = res.data;
+  geojson.features.forEach(function (vendor,i) {
+    // create a HTML element for each feature
+    var el = document.createElement('div');
+    el.className = 'marker';
+    // make a marker for each feature and add to the map
+    let popupId = `popup-${i}`
+    let popup = new mapboxgl.Popup({ offset: 25 })
+      .setHTML(ReactDOMServer.renderToStaticMarkup(
+        <MapPopup 
+          styleName={popupId}
+          vendor={vendor} 
+        />))
+    popup.on('open', (e)=>{
+      document.getElementById(popupId).addEventListener('click', async (f)=>{
+        let routeData = await handleDirectionClick(e.target._lngLat);
+        addDirections(map, routeData, document);
       });
-      let marker = new mapboxgl.Marker(el)
-        .setLngLat(vendor.geometry.coordinates)
-        // add popups
-        .setPopup(popup);
-      marker.addTo(map);
-      return map;
     });
+    let marker = new mapboxgl.Marker(el)
+      .setLngLat(vendor.geometry.coordinates)
+      // add popups
+      .setPopup(popup);
+    marker.addTo(map);
+    return map;
   });
 }
 
@@ -126,5 +124,19 @@ const addDirections = (map, routeData, document) => {
   });
 }
 
+const loadPosition = async () => {
+  try {
+    const position = await getCurrentPosition();
+    return position
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const getCurrentPosition = (options = {}) => {
+  return new Promise((resolve, reject) => {
+    navigator.geolocation.getCurrentPosition(resolve, reject, options);
+  });
+};
 
 export {initMap}
