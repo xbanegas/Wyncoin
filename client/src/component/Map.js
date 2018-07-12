@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {initMap} from '../utils/mapUtils';
+import {initMap, loadPosition} from '../utils/mapUtils';
 import axios from 'axios';
 import {Button} from 'semantic-ui-react';
 import '../css/map.css';
@@ -15,27 +15,16 @@ export default class Map extends Component {
 			bottom: 0,
 			width: '100%'
 		};
-		this.addDirectionLoc = this.addDirectionLoc.bind(this);
 		this.handleDirectionClick = this.handleDirectionClick.bind(this);
 	}
+
 	componentDidMount() {
-		let map = initMap(this.mapContainer,this.addDirectionLoc ,this.handleDirectionClick);
+		let map = initMap(this.mapContainer, this.handleDirectionClick);
 		this.setState({map});
 	}
 
-	addDirectionLoc(directionLoc){
-		// console.log('hellodirection');
-		// this.setState({directionLoc});
-	}
-
-	getLocation (){
-		return new Promise((resolve, reject) => {
-			navigator.geolocation.getCurrentPosition(resolve, reject);
-		});
-	}
-
 	async getRoute(destLoc) {
-		let userLoc = await this.getLocation();
+		let userLoc = await loadPosition();
 		let userLng = userLoc.coords.longitude;
 		let userLat = userLoc.coords.latitude;
 		let routeData;

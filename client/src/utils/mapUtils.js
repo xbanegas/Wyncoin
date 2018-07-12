@@ -11,7 +11,7 @@ const getVendors = async (geoLoc) => {
   return await axios.get(`/vendors?long=${geoLoc[0]}&lat=${geoLoc[1]}`)
 }
 
-const initMap = async(mapContainer, addDirectionLoc, handleDirectionClick) =>{
+const initMap = async(mapContainer, handleDirectionClick) =>{
   let geoLoc;
   let map;
   // get current location
@@ -139,4 +139,4 @@ const getCurrentPosition = (options = {}) => {
   });
 };
 
-export {initMap}
+export {initMap, loadPosition}
