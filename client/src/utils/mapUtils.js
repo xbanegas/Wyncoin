@@ -37,6 +37,10 @@ const initMap = async(mapContainer, handleDirectionClick) =>{
   }));
 
   // add markers to map
+  addVendorsToMap(document, map, geoLoc, handleDirectionClick);
+}
+
+const addVendorsToMap = async(document, map, geoLoc, handleDirectionClick) => {
   let res = await getVendors(geoLoc);
   let geojson = res.data;
   geojson.features.forEach(function (vendor,i) {
@@ -44,7 +48,7 @@ const initMap = async(mapContainer, handleDirectionClick) =>{
     map = addMarkerToMap(document, map, vendor, popupId, handleDirectionClick) 
     return map;
   });
-}
+};
 
 const loadPosition = async () => {
   try {
